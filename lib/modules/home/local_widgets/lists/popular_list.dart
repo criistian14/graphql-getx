@@ -29,8 +29,8 @@ class PopularList extends StatelessWidget {
             variables: {
               "page": 1,
               "perPage": AppConfig.itemsPerPage,
-              "season": "FALL",
-              "seasonYear": 2020,
+              "season": controller.currentSeason.season,
+              "seasonYear": controller.currentSeason.year,
             },
           ),
           builder: (result, {fetchMore, refetch}) {

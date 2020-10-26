@@ -13,6 +13,14 @@ class MediaDetailsController extends GetxController {
   bool loading;
   MediaModel media;
 
+  @override
+  void onInit() {
+    super.onInit();
+
+    // Get Media Info Initial
+    media = Get.arguments["media"];
+  }
+
   // =====================================================================
   // Getters
   // =====================================================================

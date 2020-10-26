@@ -30,7 +30,7 @@ class MediaItem extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return GestureDetector(
-          onTap: () => controller.openMedia(id: media.id),
+          onTap: () => controller.openMedia(media: media),
           child: Container(
             width: _widthContainer(),
             margin: EdgeInsets.only(

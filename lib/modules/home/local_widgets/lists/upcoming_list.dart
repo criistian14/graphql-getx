@@ -29,8 +29,8 @@ class UpcomingList extends StatelessWidget {
             variables: {
               "page": 1,
               "perPage": AppConfig.itemsPerPage,
-              "season": "WINTER",
-              "seasonYear": 2021,
+              "season": controller.nextSeason.season,
+              "seasonYear": controller.nextSeason.year,
             },
           ),
           builder: (result, {fetchMore, refetch}) {

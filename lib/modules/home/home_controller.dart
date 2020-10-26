@@ -1,4 +1,3 @@
-import 'package:animelist/modules/media_details/media_details_page.dart';
 import 'package:meta/meta.dart' show required;
 
 // Libraries
@@ -10,12 +9,20 @@ import 'package:animelist/data/models/media_model.dart';
 // Querys
 import 'package:animelist/data/providers/anime_graphql.dart';
 
+// Utilities
+import 'package:animelist/utils/season_utils.dart';
+
+// Pages
+import 'package:animelist/modules/media_details/media_details_page.dart';
+
 class HomeController extends GetxController {
   QueryMutationAnime _queryMutationAnime = QueryMutationAnime();
 
   List<MediaModel> _trendingList = List<MediaModel>();
   List<MediaModel> _popularList = List<MediaModel>();
   List<MediaModel> _upcomingList = List<MediaModel>();
+
+  Season currentSeason, nextSeason;
 
   // =====================================================================
   // Getters
@@ -32,6 +39,14 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    // Get Current Season of year
+    currentSeason = Season.current();
+
+    // Get Next Season of year
+    nextSeason = Season.next(
+      current: currentSeason,
+    );
   }
 
   // Set Trending List
@@ -59,11 +74,9 @@ class HomeController extends GetxController {
   }
 
   // Open Media With ID
-  void openMedia({@required int id}) {
-    Get.to(
-      MediaDetailsPage(id: id),
-      transition: Transition.rightToLeft,
-    );
+  void openMedia({@required MediaModel media}) {
+    Get.to(MediaDetailsPage(),
+        transition: Transition.rightToLeft, arguments: {"media": media});
   }
 
   void showError({@required String message}) {

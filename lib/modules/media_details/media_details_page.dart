@@ -18,11 +18,8 @@ import 'local_widgets/information.dart';
 import 'media_details_controller.dart';
 
 class MediaDetailsPage extends StatelessWidget {
-  final int id;
-
   MediaDetailsPage({
     Key key,
-    @required this.id,
   }) : super(key: key);
 
   // ====================================================================
@@ -41,7 +38,7 @@ class MediaDetailsPage extends StatelessWidget {
             options: QueryOptions(
               documentNode: gql(controller.queryGetInfoAnime),
               variables: {
-                "id": id,
+                "id": controller.media.id,
               },
             ),
             builder: (result, {refetch, fetchMore}) {
