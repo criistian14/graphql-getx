@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tinycolor/tinycolor.dart';
 
 class AppConfig {
-  static int itemsPerPage = 5;
+  static int itemsPerPage = 12;
 
   // Fonts
   static final primaryFontFamily = "OpenSans";

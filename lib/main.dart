@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 // Utilities
@@ -7,10 +8,13 @@ import 'graphql_config.dart';
 // Libraries
 import 'package:get/route_manager.dart';
 import 'package:tinycolor/tinycolor.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 // Pages
 import 'package:animelist/modules/splash/splash_page.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+
+// Translations
+import 'package:animelist/utils/translations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -142,6 +146,8 @@ class MyApp extends StatelessWidget {
       theme: _lightTheme(),
       darkTheme: _darkTheme(),
       home: SplashPage(),
+      translations: AppTranslations(),
+      locale: ui.window.locale,
     );
   }
 }

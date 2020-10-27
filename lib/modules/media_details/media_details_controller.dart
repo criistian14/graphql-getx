@@ -10,7 +10,7 @@ import 'package:animelist/data/providers/anime_graphql.dart';
 class MediaDetailsController extends GetxController {
   QueryMutationAnime _queryMutationAnime = QueryMutationAnime();
 
-  bool loading;
+  RxBool loading = true.obs;
   MediaModel media;
 
   @override

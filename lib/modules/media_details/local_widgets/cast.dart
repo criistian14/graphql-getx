@@ -35,17 +35,20 @@ class CastMediaDetails extends StatelessWidget {
           margin: EdgeInsets.only(
             top: SizeConfig.safeBlockVertical * 4,
           ),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              if (controller.loading) {
-                return _loadingPeople();
-              }
+          child: Obx(
+            () => ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                if (controller.loading.value) {
+                  return _loadingPeople();
+                }
 
-              return _person(context, index);
-            },
-            itemCount:
-                controller.loading ? 10 : controller.media.characters.length,
+                return _person(context, index);
+              },
+              itemCount: controller.loading.value
+                  ? 10
+                  : controller.media.characters.length,
+            ),
           ),
         );
       },

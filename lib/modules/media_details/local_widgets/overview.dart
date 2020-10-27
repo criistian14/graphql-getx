@@ -22,7 +22,7 @@ class OverviewMediaDetails extends StatelessWidget {
 
     return GetBuilder<MediaDetailsController>(
       builder: (controller) {
-        if (controller.loading) {
+        if (controller.loading.value) {
           return Container();
         }
 

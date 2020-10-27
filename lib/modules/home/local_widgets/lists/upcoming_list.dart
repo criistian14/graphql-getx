@@ -41,7 +41,7 @@ class UpcomingList extends StatelessWidget {
 
             return MediaSection(
               loading: result.loading,
-              title: "Upcoming Next Season",
+              title: "upcoming".tr,
               mediaList: controller.upcomingList,
               messageError: result.exception.toString(),
             );

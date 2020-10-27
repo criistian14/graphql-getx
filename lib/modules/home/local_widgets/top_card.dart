@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Global Widget
+import 'package:animelist/global_widgets/change_theme.dart';
+import 'package:animelist/global_widgets/select_lang.dart';
+
 // Utilities
 import 'package:animelist/utils/size_config.dart';
 import 'package:get/get.dart';
@@ -31,7 +35,7 @@ class TopCardHome extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _switchDarkMode(),
+          _actions(),
           _titleHome(context),
           _search(),
         ],
@@ -54,7 +58,7 @@ class TopCardHome extends StatelessWidget {
 
     return Container(
       child: Text(
-        "Hello, what do you \nwant to watch ?",
+        "home_title".tr,
         style: Theme.of(context).textTheme.headline1.merge(
               TextStyle(
                 fontSize: _fontSize,
@@ -83,7 +87,7 @@ class TopCardHome extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           contentPadding: EdgeInsets.zero,
-          hintText: "Search",
+          hintText: "search".tr,
           prefixIcon: _iconSearch(),
         ),
       ),
@@ -91,10 +95,10 @@ class TopCardHome extends StatelessWidget {
   }
 
   // ====================================================================
-  // Switch Allow Dark Mode
+  // Actions
   // ====================================================================
-  Widget _switchDarkMode() {
-    // Height Container Icon Switch (Responsive)
+  Widget _actions() {
+    // Height Container Actions (Responsive)
     double _heightContainerIcon = SizeConfig.safeBlockVertical * 3.4;
     if (SizeConfig.orientation == Orientation.landscape) {
       _heightContainerIcon = SizeConfig.safeBlockVertical * 9;
@@ -104,53 +108,15 @@ class TopCardHome extends StatelessWidget {
       height: _heightContainerIcon,
       width: SizeConfig.safeBlockHorizontal * 100,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          FlatButton(
-            onPressed: () => _changeTheme(),
-            padding: EdgeInsets.zero,
-            minWidth: 0,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            child: _iconSwitchDarkMode(),
-          ),
+          // Select Lang app
+          SelectLang(),
+
+          // Change Theme (Dark or Light)
+          ChangeTheme(),
         ],
       ),
-    );
-  }
-
-  // ====================================================================
-  // Change Theme (Dark - Light)
-  // ====================================================================
-  void _changeTheme() {
-    if (Get.isDarkMode) {
-      Get.changeThemeMode(ThemeMode.light);
-    } else {
-      Get.changeThemeMode(ThemeMode.dark);
-    }
-  }
-
-  // ====================================================================
-  // Icon Switch Dark Mode (iOS or Android)
-  // ====================================================================
-  Widget _iconSwitchDarkMode() {
-    // Size Icon Switch (Responsive)
-    double _sizeIcon = SizeConfig.safeBlockVertical * 3.4;
-    if (SizeConfig.orientation == Orientation.landscape) {
-      _sizeIcon = SizeConfig.safeBlockVertical * 9;
-    }
-
-    if (Platform.isIOS) {
-      return Icon(
-        Get.isDarkMode ? CupertinoIcons.sun_max_fill : CupertinoIcons.moon_fill,
-        size: _sizeIcon,
-        color: Colors.white,
-      );
-    }
-
-    return Icon(
-      Get.isDarkMode ? Icons.wb_sunny : Icons.nightlight_round,
-      size: _sizeIcon,
-      color: Colors.white,
     );
   }
 

@@ -108,7 +108,7 @@ class MediaSection extends StatelessWidget {
                 ),
           ),
           Text(
-            "See all",
+            "see_all".tr,
             style: Theme.of(context).textTheme.subtitle2.merge(
                   TextStyle(
                     fontSize: _fontSizeBtn,

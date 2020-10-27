@@ -18,9 +18,9 @@ import 'package:animelist/modules/media_details/media_details_page.dart';
 class HomeController extends GetxController {
   QueryMutationAnime _queryMutationAnime = QueryMutationAnime();
 
-  List<MediaModel> _trendingList = List<MediaModel>();
-  List<MediaModel> _popularList = List<MediaModel>();
-  List<MediaModel> _upcomingList = List<MediaModel>();
+  RxList<MediaModel> trendingList = List<MediaModel>().obs;
+  RxList<MediaModel> popularList = List<MediaModel>().obs;
+  RxList<MediaModel> upcomingList = List<MediaModel>().obs;
 
   Season currentSeason, nextSeason;
 
@@ -28,13 +28,8 @@ class HomeController extends GetxController {
   // Getters
   // =====================================================================
   String get queryGetTrending => _queryMutationAnime.getTrending();
-  List<MediaModel> get trendingList => _trendingList;
-
   String get queryGetPopular => _queryMutationAnime.getPopular();
-  List<MediaModel> get popularList => _popularList;
-
   String get queryGetUpcoming => _queryMutationAnime.getUpcoming();
-  List<MediaModel> get upcomingList => _upcomingList;
 
   @override
   void onInit() {
@@ -51,32 +46,29 @@ class HomeController extends GetxController {
 
   // Set Trending List
   void setTrendingList(List list) {
-    _trendingList = List<MediaModel>();
-    _trendingList = list.map((e) => MediaModel.fromJson(e)).toList();
-
-    update(["trending"]);
+    trendingList.clear();
+    trendingList.addAll(list.map((e) => MediaModel.fromJson(e)));
   }
 
   // Set Popular List
   void setPopularList(List list) {
-    _popularList = List<MediaModel>();
-    _popularList = list.map((e) => MediaModel.fromJson(e)).toList();
-
-    update(["popular"]);
+    popularList.clear();
+    popularList.addAll(list.map((e) => MediaModel.fromJson(e)));
   }
 
   // Set Upcoming Next Season List
   void setUpcomingList(List list) {
-    _upcomingList = List<MediaModel>();
-    _upcomingList = list.map((e) => MediaModel.fromJson(e)).toList();
-
-    update(["upcoming"]);
+    upcomingList.clear();
+    upcomingList.addAll(list.map((e) => MediaModel.fromJson(e)));
   }
 
   // Open Media With ID
   void openMedia({@required MediaModel media}) {
-    Get.to(MediaDetailsPage(),
-        transition: Transition.rightToLeft, arguments: {"media": media});
+    Get.to(
+      MediaDetailsPage(),
+      transition: Transition.rightToLeft,
+      arguments: {"media": media},
+    );
   }
 
   void showError({@required String message}) {

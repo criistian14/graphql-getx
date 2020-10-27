@@ -40,7 +40,7 @@ class TrendingList extends StatelessWidget {
             return MediaSection(
               isFirst: true,
               loading: result.loading,
-              title: "Trending",
+              title: "trending".tr,
               mediaList: controller.trendingList,
               messageError: result.exception.toString(),
             );

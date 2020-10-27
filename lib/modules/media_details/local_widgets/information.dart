@@ -39,25 +39,25 @@ class InformationMediaDetails extends StatelessWidget {
               // Studio Info
               _lineInfo(
                 context: context,
-                title: "Studio",
+                title: "studio".tr,
                 data: controller.media?.studiosFormat(),
-                loading: controller.loading,
+                loading: controller.loading.value,
               ),
 
               // Genres Info
               _lineInfo(
                 context: context,
-                title: "Genre",
+                title: "genres".tr,
                 data: controller.media?.genresFormat(),
-                loading: controller.loading,
+                loading: controller.loading.value,
               ),
 
               // Release Info
               _lineInfo(
                 context: context,
-                title: "Release",
+                title: "release".tr,
                 data: controller.media?.seasonYear.toString(),
-                loading: controller.loading,
+                loading: controller.loading.value,
               ),
             ],
           ),

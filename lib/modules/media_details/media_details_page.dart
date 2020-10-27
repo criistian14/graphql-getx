@@ -46,7 +46,7 @@ class MediaDetailsPage extends StatelessWidget {
                 print(result.exception.toString());
               }
 
-              controller.loading = result.loading;
+              controller.loading.value = result.loading;
 
               if (!result.loading && !result.hasException) {
                 controller.setMedia(result.data["Media"]);

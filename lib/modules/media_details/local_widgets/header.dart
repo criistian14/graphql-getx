@@ -61,7 +61,7 @@ class HeaderMediaDetails extends StatelessWidget {
                     // Rating
                     StarRating(
                       rating: controller.media?.averageScore,
-                      loading: controller.loading,
+                      loading: controller.loading.value,
                     ),
                   ],
                 ),
@@ -99,7 +99,7 @@ class HeaderMediaDetails extends StatelessWidget {
       ),
       padding: _padding,
       child: Text(
-        "WATCH NOW",
+        "watch_now".tr,
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
@@ -123,7 +123,7 @@ class HeaderMediaDetails extends StatelessWidget {
 
     return GetBuilder<MediaDetailsController>(
       builder: (controller) {
-        if (controller.loading) {
+        if (controller.loading.value) {
           return Container(
             width: SizeConfig.safeBlockHorizontal * 68,
             height: SizeConfig.safeBlockVertical * 4.2,

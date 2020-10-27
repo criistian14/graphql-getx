@@ -40,7 +40,7 @@ class PopularList extends StatelessWidget {
 
             return MediaSection(
               loading: result.loading,
-              title: "Popular This Season",
+              title: "popular".tr,
               mediaList: controller.popularList,
               messageError: result.exception.toString(),
             );

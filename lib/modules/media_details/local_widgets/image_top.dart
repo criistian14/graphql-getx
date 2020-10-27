@@ -52,7 +52,7 @@ class ImageTopMediaDetails extends StatelessWidget {
 
     return GetBuilder<MediaDetailsController>(
       builder: (controller) {
-        if (controller.loading) {
+        if (controller.loading.value) {
           return Lottie.asset(
             "assets/lottie_files/2705-image-loading.json",
             fit: BoxFit.fill,

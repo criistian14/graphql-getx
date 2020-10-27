@@ -1,5 +1,3 @@
-import 'package:animelist/modules/home/local_widgets/lists/popular_list.dart';
-import 'package:animelist/modules/home/local_widgets/lists/upcoming_list.dart';
 import 'package:flutter/material.dart';
 
 // Controllers
@@ -14,6 +12,8 @@ import 'package:animelist/utils/size_config.dart';
 // Local Widgets
 import 'local_widgets/app_bar.dart';
 import 'local_widgets/lists/trending_list.dart';
+import 'local_widgets/lists/popular_list.dart';
+import 'local_widgets/lists/upcoming_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
